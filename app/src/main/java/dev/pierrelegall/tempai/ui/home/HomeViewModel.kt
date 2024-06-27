@@ -5,9 +5,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class HomeViewModel : ViewModel() {
+    private val _text = MutableLiveData<String>().apply { value = "Tap to start" }
+    private val _buttonText = MutableLiveData<String>().apply { value = "This is a button" }
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is home Fragment"
-    }
     val text: LiveData<String> = _text
+    val buttonText: LiveData<String> = _buttonText
 }
