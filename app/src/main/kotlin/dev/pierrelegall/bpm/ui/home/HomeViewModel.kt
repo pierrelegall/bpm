@@ -1,4 +1,4 @@
-package dev.pierrelegall.tempai.ui.home
+package dev.pierrelegall.bpm.ui.home
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

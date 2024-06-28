@@ -1,5 +1,6 @@
-package dev.pierrelegall.tempai.ui.home
+package dev.pierrelegall.bpm.ui.home
 
+import android.annotation.SuppressLint
 import android.graphics.drawable.AnimationDrawable
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
@@ -10,28 +11,29 @@ import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import dev.pierrelegall.tempai.databinding.FragmentHomeBinding
-import dev.pierrelegall.tempai.tool.BpmCounter
+import dev.pierrelegall.bpm.databinding.FragmentHomeBinding
+import dev.pierrelegall.bpm.tool.Counter
 
 const val UNKNOWN_BPM_TEXT = "- - -"
 const val AUTO_RESET_TIMEOUT: Long = 10000
-const val BLINK_COLOR_SWITCH_DELAY = 30
+const val BLINK_COLOR_SWITCH_DELAY = 25
 
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding
        get() = _binding!!
-    private val bpmCounter = BpmCounter()
+    private val counter = Counter()
     private var handler: Handler = Handler(Looper.getMainLooper())
-    private var autoResetTask = Runnable { this.reset() }
+    private var autoNextResetTask = Runnable { this.reset() }
     private val blinkColors = arrayOf(
         ColorDrawable(-0xcfcfcf),
         ColorDrawable(-0xd8d8d8),
         ColorDrawable(-0xdfdfdf),
         ColorDrawable(-0xefefef),
-        ColorDrawable(-0xe8e8e8),
+        ColorDrawable(-0xe8e8e8)
     )
 
+    @SuppressLint("ClickableViewAccessibility")
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
@@ -41,7 +43,7 @@ class HomeFragment : Fragment() {
 
         this.reset()
 
-        this.binding.homeLayout.setOnTouchListener { _view, motionEvent ->
+        this.binding.homeLayout.setOnTouchListener { _, motionEvent ->
             when (motionEvent.action) {
                 MotionEvent.ACTION_DOWN -> {
                     this.tap()
@@ -62,24 +64,24 @@ class HomeFragment : Fragment() {
     }
 
     private fun tap() {
-        this.bpmCounter.mark()
+        this.counter.mark()
         this.blink()
-        val bpm = this.bpmCounter.compute()
+        val bpm = this.counter.compute()
         this.binding.bpmText.text = this.humanizeBpmOutput(bpm)
         this.binding.bpmText.visibility = View.VISIBLE
         this.binding.howToUseText.visibility = View.INVISIBLE
-        this.setAutoResetTask()
+        this.setNextAutoResetTask()
     }
 
     private fun reset() {
-        this.bpmCounter.reset()
+        this.counter.reset()
         this.binding.bpmText.text = UNKNOWN_BPM_TEXT
         this.binding.bpmText.visibility = View.INVISIBLE
         this.binding.howToUseText.visibility = View.VISIBLE
         this.cancelAutoResetTask()
     }
 
-    fun blink(): Boolean {
+    private fun blink(): Boolean {
         val layout = this.binding.homeLayout
 
         val a = AnimationDrawable()
@@ -93,13 +95,13 @@ class HomeFragment : Fragment() {
         return true
     }
 
-    private fun setAutoResetTask() {
+    private fun setNextAutoResetTask() {
         this.cancelAutoResetTask()
-        this.handler.postDelayed(this.autoResetTask, AUTO_RESET_TIMEOUT)
+        this.handler.postDelayed(this.autoNextResetTask, AUTO_RESET_TIMEOUT)
     }
 
     private fun cancelAutoResetTask() {
-        this.handler.removeCallbacks(this.autoResetTask)
+        this.handler.removeCallbacks(this.autoNextResetTask)
     }
 
     private fun humanizeBpmOutput(bpm: Long?): String {

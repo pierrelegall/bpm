@@ -1,6 +1,6 @@
-package dev.pierrelegall.tempai.tool
+package dev.pierrelegall.bpm.tool
 
-class BpmCounter {
+class Counter {
     private val taps: ArrayList<Long> = arrayListOf()
 
     fun compute(): Long? {
