@@ -1,4 +1,4 @@
-package dev.pierrelegall.bpm.ui.home
+package im.legall.bpm.ui.home
 
 import android.annotation.SuppressLint
 import android.graphics.drawable.AnimationDrawable
@@ -11,8 +11,8 @@ import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import dev.pierrelegall.bpm.databinding.FragmentHomeBinding
-import dev.pierrelegall.bpm.tool.Counter
+import im.legall.bpm.databinding.FragmentHomeBinding
+import im.legall.bpm.tool.Counter
 
 const val UNKNOWN_BPM_TEXT = "- - -"
 const val AUTO_RESET_TIMEOUT: Long = 10000

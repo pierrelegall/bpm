@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "dev.pierrelegall.bpm"
+    namespace = "im.legall.bpm"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "dev.pierrelegall.bpm"
+        applicationId = "im.legall.bpm"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
@@ -21,8 +21,8 @@ android {
         release {
             isMinifyEnabled = false
             proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                    getDefaultProguardFile("proguard-android-optimize.txt"),
+                    "proguard-rules.pro"
             )
         }
     }

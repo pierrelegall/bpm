@@ -1,4 +1,4 @@
-package dev.pierrelegall.bpm.tool
+package im.legall.bpm.tool
 
 class Counter {
     private val taps: ArrayList<Long> = arrayListOf()

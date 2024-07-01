@@ -1,4 +1,4 @@
-package dev.pierrelegall.bpm.ui.home
+package im.legall.bpm.ui.home
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

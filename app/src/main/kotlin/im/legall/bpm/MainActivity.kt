@@ -1,8 +1,8 @@
-package dev.pierrelegall.bpm
+package im.legall.bpm
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import dev.pierrelegall.bpm.databinding.ActivityMainBinding
+import im.legall.bpm.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
