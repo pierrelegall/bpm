@@ -1,1 +1,1 @@
-Help you compute beats per minute
+Helps you to compute beats per minute
