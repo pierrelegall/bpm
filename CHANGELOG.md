@@ -2,4 +2,4 @@
 
 ## `v1.0` (2024-06-28)
 
-- First version published
+- first version with only BPM counter feature

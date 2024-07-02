@@ -4,7 +4,7 @@ A simple, free and open-source Android app to help you compute beats per minutes
 
 ## Screenshot
 
-![Screenshot](./screenshots/01.png "Screenshot")
+![Screenshot](./metadata/en-US/images/01-bpm-counter.png "Screenshot")
 
 ## License
 

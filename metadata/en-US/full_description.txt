@@ -1,0 +1,7 @@
+A simple, free and open-source Android app to help you compute beats per minutes (a.k.a. BPM).
+
+Features:
+
+* Tap on the beat to show the BPM
+* Auto reset every 10 seconds or manual reset
+* And that's all
